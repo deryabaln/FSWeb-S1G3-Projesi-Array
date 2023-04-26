@@ -40,9 +40,11 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 */
 
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
-}
+function kopyala(copyArray){
+  for (let i=0; i<orijinalTatlar.length; i++){
+    copyArray[i] = orijinalTatlar[i] 
+  } return copyArray
+} console.log(kopyala (orijinalTatlar))
 
 
 /* Görev 2:
@@ -55,10 +57,14 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 Örneğin: dizi25Cesit(orijinalTatlar) kodunuz düzgün çalışıyorsa true değerini döndürür.
 */
 
-
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
-}
+let result = 0
+function dizi25Cesitmi(tatlarArray){
+  if(tatlarArray.length == 25){
+    result = true
+  } else{
+    result = false
+  } return result
+} console.log(dizi25Cesitmi(orijinalTatlar))
 
 
 /* Görev 3:
@@ -73,10 +79,12 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
   Örneğin: cesitEkle(orijinalTatlar, "Kakule") işlevi doğru çalıştığında ["Kakule", "Muz",..."Vanilya"] şeklinde dönmelidir
 */
 
-
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
-}
+function cesitEkle(tatlar, yeniTat ){
+  let newArray = tatlar.unshift(yeniTat);
+  for(let i=0; i<newArray.length; i++){
+    console.log(tatlar);
+   } return tatlar
+}console.log(cesitEkle(orijinalTatlar, 'Kakule'))
 
 
 /* Cörev 4:
@@ -91,10 +99,12 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
    Örneğin: sonCesitiKaldir(orijinalTatlar) çalıştırıldığında ["Kakule", "Muz",..."Çilek"] döndürülür.
 */
 
-
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
-}
+function sonCesitiKaldir(tatlar2){
+  let newArray2 = tatlar2.pop();
+  for(let i=0; i<newArray2.length; i++){
+    console.log(tatlar2);
+   } return tatlar2
+}console.log(sonCesitiKaldir(orijinalTatlar))
 
 
 /* Görev 5:
@@ -108,9 +118,11 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
-}
+function indekstekiCesitiGetir(tatlar3, istenilen){
+  let newArray3 = tatlar3[istenilen];
+  for(let i=0; i<tatlar3.length; i++){
+   } return newArray3;
+} console.log(indekstekiCesitiGetir(orijinalTatlar,2))
 
 
 /* Görev 6:
@@ -127,10 +139,12 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
 
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
-
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
-}
+function ismeGoreCesitCikar(tatlar4, lezzet){
+  let position= tatlar4.indexOf(lezzet)
+  let newArray4 = tatlar4.splice(position, 1)
+  for(let i=0; i<tatlar4.length; i++){
+   } return tatlar4
+}console.log(ismeGoreCesitCikar(orijinalTatlar,'Tarçın'))
 
 
 /* Görev 7:
@@ -153,10 +167,17 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
   Bu sorunu çözmek için GELİŞMİŞ DİZİ YÖNTEMLERİNİ (yani .filter) KULLANMAYIN.
 */
 
+function ismeGoreFiltrele(tatlar5, lezzet1){
+  let newArray5 = [];
+  for(let i=0; i<tatlar5.length; i++){
+    if(tatlar5[i].includes(lezzet1)){
+      newArray5.push(tatlar5[i])
+    }
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+  } 
+  return newArray5
 }
+console.log(ismeGoreFiltrele(orijinalTatlar, 'Çikolata'))
 
 
 
@@ -172,9 +193,17 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
 
-function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
-}
+function ortalamaKelimeSayisi(dizi){
+  let toplam = 0
+  for(let i=0; i<dizi.length; i++){
+   let kelimeler = dizi[i].split(' ');
+   let kelimeSayisi =kelimeler.length;
+   toplam = toplam + kelimeSayisi 
+  }
+  let average = toplam / dizi.length 
+  return average
+
+}console.log(ortalamaKelimeSayisi(orijinalTatlar))
 
 
 /* ALIŞTIRMA 2:
@@ -189,48 +218,59 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
   Örneğin: rastgeleTatlar(orijinalTatlar, yeniTatlar, mevsimlikTatlar, bolgeselTatlar) çalıştırıldığında ["Kestane", "Ballı Badem,"..."Hindistan Cevizi", "Kuru üzüm"].
 */
 
+// NEW DATA ARRAYS FOR STRETCH 2 
 
-function rastgeleTatlar(/*kod buraya*/){
-  /*kod buraya*/
+const yeniTatlar = [
+  "Badem",
+  "Ballı Badem",
+  "Fıstık Ezmesi",
+  "Profiterol",
+  "Madlen Çikolata"
+]
+
+const mevsimlikTatlar = [
+"Pekan",
+"Kaju",
+"Çikolatalı Mousse",
+"Fransız Vanilyası",
+"Yumurta",
+"Alman çikolatası",
+"Kek üzerine krema",
+"Hindistan Cevizi",
+"Kaymaklı Biskuvi",
+"Beyaz Çikolata",
+"Mango"
+]
+
+const bolgeselTatlar = [
+"Kaymak",
+"Karpuz",
+"Karadut",
+"Turunç",
+"Portakal",
+"Yogurt",
+"Krem Peynir",
+"Kakao",
+"Karamel macchiato",
+"Kuru üzüm",
+"Peynir",
+"Karamel"
+]
+
+function rastgeleTatlar(orijinalTatlar, yeniTatlar, mevsimlikTatlar, bolgeselTatlar){
+  let rastgeleTatlar = [], diziTopla= [] ;
+  diziTopla= diziTopla.concat(orijinalTatlar, yeniTatlar, mevsimlikTatlar, bolgeselTatlar);
+  let i = 0;
+  while(i<25){
+    let toCheck=diziTopla[Math.floor(Math.random()* diziTopla.length)];
+    if(!rastgeleTatlar.includes(toCheck)){
+      rastgeleTatlar.push(toCheck)
+      i++;
+    }
+  }
+  return(rastgeleTatlar.length)
 }
-
-// NEW DATA ARRAYS FOR STRETCH 2 ⬇️
-// const yeniTatlar = [
-//   "Badem",
-//   "Ballı Badem",
-//   "Fıstık Ezmesi",
-//   "Profiterol",
-//   "Madlen Çikolata"
-// ]
-
-// const mevsimlikTatlar = [
-// "Pekan",
-// "Kaju",
-// "Çikolatalı Mousse",
-// "Fransız Vanilyası",
-// "Yumurta",
-// "Alman çikolatası",
-// "Kek üzerine krema",
-// "Hindistan Cevizi",
-// "Kaymaklı Biskuvi",
-// "Beyaz Çikolata",
-// "Mango"
-// ]
-
-// const bolgeselTatlar = [
-// "Kaymak",
-// "Karpuz",
-// "Karadut",
-// "Turunç",
-// "Portakal",
-// "Yogurt",
-// "Krem Peynir",
-// "Kakao",
-// "Karamel macchiato",
-// "Kuru üzüm",
-// "Peynir",
-// "Karamel"
-// ]
+console.log(rastgeleTatlar(orijinalTatlar, yeniTatlar, mevsimlikTatlar, bolgeselTatlar))
 
 
 /* Lütfen bu satırın altındaki hiçbir şeyi değiştirmeyin */
